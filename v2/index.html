@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mur Jantes Porsche</title>
+<link rel="stylesheet" href="https://use.typekit.net/yqa3sik.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --papier: #E7E5E0;
+    --papier-2: #DEDCD6;
+    --encre: #1C1C1A;
+    --titre: #5C5C58;
+    --doux: #85847E;
+    --filet: #BDBBB4;
+    --vert: #CCFF00;
+    --ease: cubic-bezier(.22, .8, .24, 1);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: "Montserrat", sans-serif; color: var(--encre); background: var(--papier); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  img { display: block; max-width: 100%; }
+  button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+  .large { font-family: "cofo-peshka-variable", sans-serif; text-transform: uppercase; font-variation-settings: "wght" 700, "wdth" 150; }
+  .cadre { max-width: 1240px; margin: 0 auto; padding: 0 clamp(16px, 5vw, 64px); }
+
+  /* ---------- Ouverture ---------- */
+  .hero { min-height: 100svh; display: flex; flex-direction: column; padding-top: 32px; padding-bottom: 36px; }
+  .surtitre { display: flex; justify-content: space-between; font-size: 11px; letter-spacing: .28em; color: var(--doux); font-variation-settings: "wght" 600, "wdth" 150; }
+  .surtitre span:first-child::before { content: ""; display: inline-block; width: 8px; height: 8px; background: var(--vert); margin-right: 10px; vertical-align: 1px; }
+  .hero h1 { margin-top: clamp(40px, 8vh, 90px); line-height: .95; }
+  .hero h1 .l1 { display: block; font-size: clamp(17px, 3.6vw, 46px); font-variation-settings: "wght" 800, "wdth" 150; letter-spacing: .02em; }
+  .hero h1 .l2 { display: block; font-size: clamp(26px, 7.4vw, 94px); color: var(--titre); font-variation-settings: "wght" 560, "wdth" 150; margin-top: .12em; white-space: nowrap; }
+  .chapo { text-align: right; margin-top: 18px; font-size: 12px; letter-spacing: .22em; text-transform: uppercase; font-weight: 600; }
+  .hero-jante { flex: 1; min-height: 260px; position: relative; margin: 24px 0; }
+  .hero-jante img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; animation: tourne 120s linear infinite; }
+  .bloc { display: flex; align-items: stretch; gap: 28px; }
+  .bloc .annees span { display: block; font-size: 15px; letter-spacing: .14em; }
+  .bloc .annees strong { display: block; font-size: clamp(22px, 3vw, 32px); color: var(--titre); font-weight: normal; font-variation-settings: "wght" 500, "wdth" 150; margin-top: 4px; white-space: nowrap; }
+  .bloc .barre { width: 3px; background: var(--encre); }
+  .bloc p { align-self: center; font-size: 14px; line-height: 1.6; color: #4A4A46; max-width: 360px; }
+  .bloc a { margin-left: auto; align-self: center; font-size: 12px; letter-spacing: .2em; color: var(--encre); text-decoration: none; display: flex; align-items: center; gap: 12px; white-space: nowrap; }
+  .bloc a i { width: 44px; height: 44px; border: 1px solid var(--encre); border-radius: 50%; display: grid; place-items: center; transition: background .4s var(--ease), color .4s; }
+  .bloc a:hover i { background: var(--encre); color: var(--papier); }
+  @keyframes tourne { to { rotate: 360deg; } }
+
+  /* ---------- Le mur ---------- */
+  .section-mur { padding: clamp(64px, 9vw, 120px) 0; border-top: 1px solid var(--filet); }
+  .entete { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap; margin-bottom: 48px; }
+  .entete h2 { font-size: clamp(26px, 4vw, 44px); font-variation-settings: "wght" 800, "wdth" 150; line-height: 1; }
+  .entete p { margin-top: 12px; color: #4A4A46; font-size: 14px; }
+  .filtres { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; }
+  .filtres > span { font-size: 10px; letter-spacing: .2em; color: var(--doux); margin-right: 12px; }
+  .filtre { padding: 8px 10px; font-size: 13px; letter-spacing: .1em; color: var(--doux); position: relative; transition: color .3s; font-family: "cofo-peshka-variable"; font-variation-settings: "wght" 600, "wdth" 150; }
+  .filtre::after { content: ""; position: absolute; left: 10px; right: 10px; bottom: 2px; height: 2px; background: var(--encre); transform: scaleX(0); transition: transform .4s var(--ease); }
+  .filtre:hover { color: var(--encre); }
+  .filtre[aria-pressed="true"] { color: var(--encre); }
+  .filtre[aria-pressed="true"]::after { transform: none; }
+
+  .mur { display: grid; grid-template-columns: 120px repeat(3, 1fr); grid-template-rows: repeat(9, 230px); column-gap: clamp(16px, 3vw, 40px); }
+  .frise { grid-column: 1; grid-row: 1 / -1; position: relative; }
+  .frise::before { content: ""; position: absolute; left: 6px; top: 12px; bottom: 6%; width: 1px; background: var(--filet); }
+  .frise::after { content: ""; position: absolute; left: 1px; top: 0; border: 6px solid transparent; border-top: 0; border-bottom: 11px solid var(--encre); }
+  .palier { grid-column: 1; align-self: center; padding-left: 22px; position: relative; opacity: 0; transform: translateY(14px); transition: opacity .8s var(--ease), transform .8s var(--ease); }
+  .palier::before { content: ""; position: absolute; left: 2px; top: 6px; width: 9px; height: 9px; border-radius: 50%; background: var(--encre); }
+  .palier.depart::before { background: var(--vert); box-shadow: 0 0 0 1px var(--encre); }
+  .palier b { display: block; font-size: 22px; font-variation-settings: "wght" 700, "wdth" 150; }
+  .palier small { display: block; white-space: nowrap; font-size: 10px; color: var(--doux); margin-top: 4px; letter-spacing: .08em; font-variation-settings: "wght" 500, "wdth" 150; }
+
+  .jante {
+    grid-row: span 2; display: flex; flex-direction: column; align-items: center; padding: 8px 0 18px; cursor: pointer; outline: none; position: relative;
+    opacity: 0; transform: translateY(18px); transition: opacity .8s var(--ease), transform .8s var(--ease), filter .5s;
+  }
+  .vu .jante, .vu .palier { opacity: 1; transform: none; }
+  .g { grid-column: 2; } .c { grid-column: 3; } .d { grid-column: 4; }
+  .tete { width: 100%; display: flex; justify-content: space-between; font-size: 13px; color: var(--doux); font-variation-settings: "wght" 600, "wdth" 150; }
+  .tete .n { color: var(--encre); }
+  .visuel { flex: none; height: 250px; width: 100%; position: relative; margin: -4px 0 14px; }
+  .visuel img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; transition: rotate 1.4s var(--ease), scale 1s var(--ease); }
+  .jante:hover .visuel img, .jante:focus-visible .visuel img { rotate: 36deg; scale: 1.04; }
+  .nom { font-size: 17px; letter-spacing: .03em; font-variation-settings: "wght" 760, "wdth" 140; text-align: center; position: relative; padding-bottom: 6px; }
+  .nom::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: var(--vert); transform: scaleX(0); transition: transform .5s var(--ease); }
+  .jante:hover .nom::after, .jante:focus-visible .nom::after { transform: none; }
+  .meta { margin-top: 8px; font-size: 12.5px; line-height: 1.35; text-align: center; color: #3E3E3B; }
+  .meta b { font-family: "cofo-peshka-variable"; font-weight: normal; font-variation-settings: "wght" 700, "wdth" 140; font-size: 11.5px; letter-spacing: .06em; color: var(--encre); }
+  .bloc-mot { white-space: nowrap; }
+  .histoire { margin-top: 8px; font-size: 12px; line-height: 1.5; color: #5A5A54; text-align: center; max-width: 300px; }
+  .jante.eteinte { filter: opacity(.2); }
+  .jante.eteinte .visuel img { rotate: 0deg !important; }
+
+  /* ---------- Détail ---------- */
+  .voile { position: fixed; inset: 0; background: rgba(28,28,26,.4); opacity: 0; pointer-events: none; transition: opacity .5s var(--ease); z-index: 20; }
+  .voile.ouvert { opacity: 1; pointer-events: auto; }
+  .panneau {
+    position: fixed; inset: 0 0 0 auto; width: min(1040px, 100%); background: var(--papier); z-index: 21;
+    transform: translateX(102%); transition: transform .7s var(--ease); display: grid; grid-template-columns: 1.1fr 1fr;
+  }
+  .panneau.ouvert { transform: none; }
+  .scene { position: relative; background: var(--papier-2); display: grid; place-items: center; overflow: hidden; }
+  .scene .cercle { position: absolute; width: 84%; aspect-ratio: 1; border: 1px solid var(--filet); border-radius: 50%; }
+  .scene .axe { position: absolute; background: var(--filet); opacity: .7; }
+  .scene .axe.h { left: 0; right: 0; height: 1px; top: 50%; }
+  .scene .axe.v { top: 0; bottom: 0; width: 1px; left: 50%; }
+  .scene .dessin { width: 74%; aspect-ratio: 1; cursor: grab; touch-action: none; user-select: none; -webkit-user-drag: none; position: relative; transition: opacity .5s; }
+  .scene .dessin:active { cursor: grabbing; }
+  .scene .photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .6s var(--ease); }
+  .scene.mode-photo .photo { opacity: 1; }
+  .scene.mode-photo .dessin, .scene.mode-photo .astuce { opacity: 0; }
+  .astuce { position: absolute; bottom: 22px; left: 0; right: 0; text-align: center; font-size: 10px; letter-spacing: .2em; color: var(--doux); transition: opacity .4s; }
+  .bascule { position: absolute; top: 22px; left: 22px; display: flex; gap: 2px; z-index: 2; background: var(--papier); padding: 4px; }
+  .bascule button { padding: 7px 12px; font-size: 11px; letter-spacing: .14em; color: var(--doux); font-family: "cofo-peshka-variable"; font-variation-settings: "wght" 600, "wdth" 150; transition: background .3s, color .3s; }
+  .bascule button[aria-pressed="true"] { background: var(--encre); color: var(--papier); }
+  .bascule button:disabled { opacity: .35; cursor: not-allowed; }
+
+  .infos { min-width: 0; padding: clamp(24px, 4vw, 56px); display: flex; flex-direction: column; overflow-y: auto; }
+  .infos-haut { display: flex; justify-content: space-between; align-items: center; font-size: 14px; color: var(--doux); }
+  .infos-haut .n { color: var(--encre); }
+  .fermer { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--encre); display: grid; place-items: center; transition: background .3s, color .3s; }
+  .fermer:hover { background: var(--encre); color: var(--papier); }
+  .infos h3 { font-size: clamp(24px, 2.7vw, 36px); line-height: 1.02; margin: 34px 0 0; font-variation-settings: "wght" 800, "wdth" 150; }
+  .infos .taille { font-size: clamp(36px, 5vw, 64px); color: var(--titre); font-variation-settings: "wght" 500, "wdth" 150; line-height: 1; margin-top: 6px; }
+  .recit { margin-top: 26px; font-size: 16px; line-height: 1.65; color: #34342F; max-width: 440px; }
+  .fiche { display: flex; gap: 22px; margin: 28px 0 30px; }
+  .fiche .barre { width: 3px; background: var(--encre); flex: none; }
+  .fiche dl { display: grid; grid-template-columns: 90px 1fr; gap: 12px 16px; font-size: 14px; line-height: 1.4; }
+  .fiche dt { font-size: 10px; letter-spacing: .14em; padding-top: 3px; font-variation-settings: "wght" 700, "wdth" 150; }
+  .position { display: flex; gap: 18px; align-items: center; padding-top: 24px; border-top: 1px solid var(--filet); }
+  .mini-mur { display: grid; grid-template-columns: repeat(3, 14px); grid-template-rows: repeat(9, 6px); gap: 3px 4px; }
+  .mini-mur i { grid-row: span 2; background: var(--filet); }
+  .mini-mur i.ici { background: var(--encre); box-shadow: inset 0 -3px 0 var(--vert); }
+  .position p { font-size: 13px; color: #4A4A46; line-height: 1.55; }
+  .position b { color: var(--encre); font-weight: 600; }
+  .nav { margin-top: auto; padding-top: 28px; display: flex; gap: 10px; }
+  .nav button {
+    flex: 1; min-width: 0; padding: 16px 10px; border: 1px solid var(--encre); font-size: 10px; letter-spacing: .1em; white-space: nowrap;
+    display: flex; align-items: center; justify-content: center; gap: 10px; transition: background .3s, color .3s;
+    font-family: "cofo-peshka-variable"; text-transform: uppercase; font-variation-settings: "wght" 650, "wdth" 150;
+  }
+  .nav button:hover { background: var(--encre); color: var(--papier); }
+
+  /* ---------- Pied ---------- */
+  .pied { border-top: 1px solid var(--filet); padding: 40px 0 48px; }
+  .pied .cadre { display: flex; align-items: stretch; gap: 28px; flex-wrap: wrap; }
+  .pied .notes { flex: 1; min-width: 240px; display: flex; flex-direction: column; justify-content: center; gap: 6px; }
+  .pied h2 { font-size: 12px; letter-spacing: .1em; }
+  .pied p { font-size: 13px; color: #4A4A46; }
+  .pied p.cta { color: var(--encre); font-weight: 600; }
+  .pied img { height: 30px; align-self: center; opacity: .82; }
+
+  /* ---------- Mobile ---------- */
+  @media (max-width: 900px) {
+    .mur { grid-template-columns: repeat(2, 1fr); grid-template-rows: none; gap: 40px 16px; }
+    .frise, .palier { display: none; }
+    .jante { grid-row: auto !important; grid-column: auto !important; }
+    .visuel { flex: none; height: clamp(130px, 38vw, 260px); }
+    .panneau { grid-template-columns: 1fr; grid-template-rows: 44svh 1fr; }
+    .hero-jante { min-height: 220px; }
+  }
+  @media (max-width: 560px) {
+    .surtitre { font-size: 9px; letter-spacing: .16em; }
+    .astuce { font-size: 8px; letter-spacing: .12em; }
+    .scene { min-width: 0; }
+    .bloc { flex-wrap: wrap; gap: 18px; } .bloc .barre { display: none; } .bloc a { margin-left: 0; }
+    .chapo { font-size: 10px; text-align: left; }
+    .nom { font-size: 13px; }
+    .meta { font-size: 11px; } .meta b { font-size: 10px; }
+    .bloc-mot { white-space: normal; }
+    .histoire { display: none; }
+    .tete { font-size: 11px; }
+    .entete { margin-bottom: 32px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; }
+    .jante, .palier { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero cadre">
+  <div class="surtitre large"><span>Studio EVOX</span><span>Collection Porsche</span></div>
+  <h1 class="large"><span class="l1">À chaque jante,</span><span class="l2">son histoire</span></h1>
+  <p class="chapo">Retrouvez les modèles dans la même disposition que sur le mur</p>
+  <div class="hero-jante"><img src="assets/illustrations/01.png" alt="Jante Classic Sport F, style des premières 911 S"></div>
+  <div class="bloc">
+    <div class="annees large"><span>12 jantes</span><strong>1967 — 2019</strong></div>
+    <div class="barre"></div>
+    <p>Le mur se lit du bas vers le haut : de l’esthétique Fuchs des premières 911 S jusqu’aux dessins de la 991.</p>
+    <a class="large" href="#mur">Explorer le mur <i><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12m0 0L2 8m5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a>
+  </div>
+</header>
+
+<main class="section-mur" id="mur">
+  <div class="cadre">
+    <div class="entete">
+      <div>
+        <h2 class="large">Le mur</h2>
+        <p>Sélectionnez une jante pour découvrir son histoire.</p>
+      </div>
+      <div class="filtres" id="filtres"><span class="large">Diamètre</span></div>
+    </div>
+    <div class="mur" id="grille"><div class="frise"></div></div>
+  </div>
+</main>
+
+<footer class="pied">
+  <div class="cadre bloc">
+    <div class="annees large"><span>12 jantes</span><strong>1967 — 2019</strong></div>
+    <div class="barre"></div>
+    <div class="notes">
+      <h2 class="large">Modèles et années : repères stylistiques</h2>
+      <p>Montage à confirmer selon la référence, la largeur et le déport de chaque jante.</p>
+      <p class="cta">Renseignez-vous auprès de notre équipe</p>
+    </div>
+    <img src="assets/evox-logo-noir.svg" alt="EVOX Performance">
+  </div>
+</footer>
+
+<!-- Détail d'une jante -->
+<div class="voile" id="voile"></div>
+<aside class="panneau" id="panneau" role="dialog" aria-modal="true" aria-labelledby="d-nom" aria-hidden="true">
+  <div class="scene" id="scene">
+    <div class="cercle"></div><i class="axe h"></i><i class="axe v"></i>
+    <img class="dessin" id="d-dessin" alt="" draggable="false">
+    <img class="photo" id="d-photo" alt="">
+    <div class="bascule">
+      <button id="b-dessin" aria-pressed="true">Dessin</button>
+      <button id="b-photo" aria-pressed="false">Photo</button>
+    </div>
+    <div class="astuce large">Faites glisser pour tourner la jante</div>
+  </div>
+  <div class="infos">
+    <div class="infos-haut large"><span><span class="n" id="d-num"></span> / 12</span>
+      <button class="fermer" id="fermer" aria-label="Fermer">
+        <svg width="14" height="14" viewBox="0 0 14 14"><path d="M1 1l12 12M13 1 1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <h3 class="large" id="d-nom"></h3>
+    <div class="taille large" id="d-taille"></div>
+    <p class="recit" id="d-histoire"></p>
+    <div class="fiche">
+      <div class="barre"></div>
+      <dl>
+        <dt class="large" id="t-periode">Période</dt><dd id="d-periode"></dd>
+        <dt class="large">Modèle</dt><dd id="d-modele"></dd>
+        <dt class="large">Dessin</dt><dd id="d-design"></dd>
+      </dl>
+    </div>
+    <div class="position">
+      <div class="mini-mur" id="d-mini"></div>
+      <p id="d-pos"></p>
+    </div>
+    <div class="nav">
+      <button id="prec"><svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M7 13V1m0 0L2 6m5-5 5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" transform="rotate(180 7 7)"/></svg>Plus ancienne</button>
+      <button id="suiv">Plus récente<svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M7 13V1m0 0L2 6m5-5 5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    </div>
+  </div>
+</aside>
+
+<script src="assets/jantes.js"></script>
+<script>
+  const $ = id => document.getElementById(id);
+  const grille = $("grille");
+  const COLS = { g: "de gauche", c: "centrale", d: "de droite" };
+  const mobile = matchMedia("(max-width: 900px)");
+
+  // --- Frise
+  PALIERS.forEach(p => grille.insertAdjacentHTML("beforeend",
+    `<div class="palier large${p.palier === 1 ? " depart" : ""}" style="grid-row:${10 - 2 * p.palier}"><b>${p.label}</b><small>${p.sous}</small></div>`));
+
+  // --- Jantes, dans l'ordre du mur (haut → bas) pour le mobile ; placées par la grille sur grand écran
+  const ordreMur = [...JANTES].sort((a, b) => a.ligne - b.ligne || "gcd".indexOf(a.col) - "gcd".indexOf(b.col));
+  ordreMur.forEach(j => {
+    const el = document.createElement("article");
+    el.className = `jante ${j.col}`;
+    el.tabIndex = 0;
+    el.style.gridRow = `${j.ligne} / span 2`;
+    el.setAttribute("role", "button");
+    el.setAttribute("aria-label", `${j.n} — ${j.nom}, ${j.taille} pouces`);
+    el.innerHTML = `
+      <div class="tete large"><span class="n">${j.n}</span><span>${j.taille}"</span></div>
+      <div class="visuel"><img src="assets/illustrations/${j.n}.png" alt="" loading="lazy"></div>
+      <h3 class="nom large">${j.nom}</h3>
+      <p class="meta">${j.periode ? `<b>${j.periode}</b> — ` : ""}<span class="bloc-mot">${j.modele}</span></p>
+      <p class="histoire">${j.histoire}</p>`;
+    const i = JANTES.indexOf(j);
+    el.addEventListener("click", () => ouvrir(i));
+    el.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); ouvrir(i); } });
+    j.el = el;
+    grille.appendChild(el);
+  });
+
+  // apparition chronologique : le mur se remplit du bas vers le haut
+  JANTES.forEach((j, i) => j.el.style.transitionDelay = `${i * 110}ms`);
+  document.querySelectorAll(".palier").forEach((p, i) => p.style.transitionDelay = `${i * 330}ms`);
+  new IntersectionObserver((es, io) => es.forEach(e => {
+    if (!e.isIntersecting) return;
+    grille.classList.add("vu"); io.disconnect();
+    setTimeout(() => JANTES.forEach(j => j.el.style.transitionDelay = ""), 2600);
+  }), { threshold: mobile.matches ? .05 : .2 }).observe(grille);
+
+  // --- Filtre diamètre
+  const tailles = [...new Set(JANTES.map(j => j.taille))].sort((a, b) => a - b);
+  [["", "Tous"], ...tailles.map(t => [String(t), t + '"'])].forEach(([v, label]) => {
+    const b = document.createElement("button");
+    b.className = "filtre"; b.textContent = label; b.setAttribute("aria-pressed", v === "" ? "true" : "false");
+    b.addEventListener("click", () => {
+      $("filtres").querySelectorAll(".filtre").forEach(f => f.setAttribute("aria-pressed", f === b ? "true" : "false"));
+      JANTES.forEach(j => {
+        const ok = !v || String(j.taille) === v;
+        j.el.classList.toggle("eteinte", !ok);
+        j.el.tabIndex = ok ? 0 : -1;
+      });
+    });
+    $("filtres").appendChild(b);
+  });
+
+  // --- Détail
+  const panneau = $("panneau"), voile = $("voile"), scene = $("scene"), dessin = $("d-dessin");
+  let actuel = 0, angle = 0, dernierFocus = null;
+
+  JANTES.forEach(j => {
+    const i = document.createElement("i");
+    i.style.gridColumn = { g: 1, c: 2, d: 3 }[j.col];
+    i.style.gridRow = `${j.ligne} / span 2`;
+    j.mini = i; $("d-mini").appendChild(i);
+  });
+
+  function remplir(i) {
+    const j = JANTES[i]; actuel = i; angle = 0;
+    dessin.style.rotate = "0deg";
+    dessin.src = `assets/illustrations/${j.n}.png`;
+    dessin.alt = `Dessin de la jante ${j.nom}`;
+    $("d-num").textContent = j.n;
+    $("d-nom").textContent = j.nom;
+    $("d-taille").textContent = `${j.taille}"`;
+    $("d-modele").textContent = j.modele;
+    $("d-periode").textContent = j.periode;
+    $("d-periode").hidden = $("t-periode").hidden = !j.periode;
+    $("d-histoire").textContent = j.histoire;
+    $("d-design").textContent = j.design;
+    const etage = PALIERS.find(p => p.palier === j.palier);
+    $("d-pos").innerHTML = `Sur le mur : <b>colonne ${COLS[j.col]}</b>,<br>étage ${etage.label} — ${etage.sous}.`;
+    JANTES.forEach(k => k.mini.classList.toggle("ici", k === j));
+    $("prec").disabled = i === 0; $("prec").style.opacity = i === 0 ? .3 : 1;
+    $("suiv").disabled = i === JANTES.length - 1; $("suiv").style.opacity = i === JANTES.length - 1 ? .3 : 1;
+    const bPhoto = $("b-photo");
+    bPhoto.disabled = !j.photo;
+    bPhoto.title = j.photo ? "" : "Photo à venir";
+    if (j.photo) { $("d-photo").src = `assets/photos/${j.n}.jpg`; $("d-photo").alt = `Photo de la jante ${j.nom} sur le mur`; }
+    else mode("dessin");
+  }
+  function mode(m) {
+    scene.classList.toggle("mode-photo", m === "photo");
+    $("b-dessin").setAttribute("aria-pressed", m === "dessin");
+    $("b-photo").setAttribute("aria-pressed", m === "photo");
+  }
+  function ouvrir(i) {
+    dernierFocus = document.activeElement;
+    remplir(i); mode("dessin");
+    panneau.classList.add("ouvert"); voile.classList.add("ouvert");
+    panneau.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+    setTimeout(() => $("fermer").focus(), 50);
+  }
+  function fermer() {
+    panneau.classList.remove("ouvert"); voile.classList.remove("ouvert");
+    panneau.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+    dernierFocus && dernierFocus.focus();
+  }
+  const pas = d => { const k = actuel + d; if (k >= 0 && k < JANTES.length) remplir(k); };
+
+  $("fermer").onclick = fermer; voile.onclick = fermer;
+  $("prec").onclick = () => pas(-1); $("suiv").onclick = () => pas(1);
+  $("b-dessin").onclick = () => mode("dessin"); $("b-photo").onclick = () => mode("photo");
+  document.addEventListener("keydown", e => {
+    if (!panneau.classList.contains("ouvert")) return;
+    if (e.key === "Escape") fermer();
+    if (e.key === "ArrowUp" || e.key === "ArrowRight") { e.preventDefault(); pas(1); }
+    if (e.key === "ArrowDown" || e.key === "ArrowLeft") { e.preventDefault(); pas(-1); }
+  });
+
+  // rotation de la jante au glisser
+  let glisse = null;
+  dessin.addEventListener("pointerdown", e => {
+    const r = dessin.getBoundingClientRect(), cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+    glisse = { cx, cy, a0: angle, d0: Math.atan2(e.clientY - cy, e.clientX - cx) };
+    dessin.setPointerCapture(e.pointerId);
+  });
+  dessin.addEventListener("pointermove", e => {
+    if (!glisse) return;
+    angle = glisse.a0 + (Math.atan2(e.clientY - glisse.cy, e.clientX - glisse.cx) - glisse.d0) * 180 / Math.PI;
+    dessin.style.rotate = angle + "deg";
+  });
+  dessin.addEventListener("pointerup", () => glisse = null);
+</script>
+</body>
+</html>
