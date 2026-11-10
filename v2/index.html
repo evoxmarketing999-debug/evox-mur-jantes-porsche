@@ -19,7 +19,8 @@
     --ease: cubic-bezier(.22, .8, .24, 1);
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; overflow-x: hidden; }
+  button:focus:not(:focus-visible) { outline: none; }
   body { font-synthesis: none; font-style: normal; font-family: "Montserrat", sans-serif; color: var(--encre); background: var(--papier); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
   img { display: block; max-width: 100%; }
   button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
@@ -151,12 +152,24 @@
 
   /* ---------- Mobile ---------- */
   @media (max-width: 900px) {
-    .mur { grid-template-columns: repeat(2, 1fr); grid-template-rows: none; gap: 40px 16px; }
+    /* tablette en portrait : on garde la disposition du mur, en plus compact */
+    .mur { grid-template-columns: 64px repeat(3, minmax(0, 1fr)); grid-template-rows: repeat(9, 236px); column-gap: 12px; }
+    .palier { padding-left: 16px; }
+    .palier b { font-size: 15px; }
+    .palier small { display: none; }
+    .nom { font-size: 14px; }
+    .meta { font-size: 11px; } .meta b { font-size: 10px; }
+    .histoire { font-size: 11px; }
+    .panneau { grid-template-columns: minmax(0, 1fr); grid-template-rows: 44svh 1fr; }
+    .scene, .infos { min-width: 0; }
+    .hero-jante { min-height: 220px; }
+  }
+  @media (max-width: 640px) {
+    /* téléphone : grille simple à 2 colonnes, dans l'ordre du mur */
+    .mur { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: none; gap: 40px 16px; }
     .frise, .palier { display: none; }
     .jante { grid-row: auto !important; grid-column: auto !important; }
     .visuel { flex: none; height: clamp(130px, 38vw, 260px); }
-    .panneau { grid-template-columns: 1fr; grid-template-rows: 44svh 1fr; }
-    .hero-jante { min-height: 220px; }
   }
   @media (max-width: 560px) {
     .surtitre { font-size: 9px; letter-spacing: .16em; }
