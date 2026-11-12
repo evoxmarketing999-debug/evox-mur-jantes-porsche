@@ -160,9 +160,23 @@
     .nom { font-size: 14px; }
     .meta { font-size: 11px; } .meta b { font-size: 10px; }
     .histoire { font-size: 11px; }
-    .panneau { grid-template-columns: minmax(0, 1fr); grid-template-rows: 44svh 1fr; }
+    .panneau { grid-template-columns: minmax(0, 1fr); grid-template-rows: 44svh minmax(0, 1fr); }
     .scene, .infos { min-width: 0; }
+    .scene .dessin { width: min(74%, 36svh); }
+    .scene .cercle { width: min(84%, 41svh); }
     .hero-jante { min-height: 220px; }
+    .hero .bloc { flex-wrap: wrap; row-gap: 20px; }
+    .hero .bloc p { order: 3; flex-basis: 100%; max-width: 520px; }
+  }
+  /* écran bas en paysage (téléphone couché) : fiche en deux colonnes */
+  @media (max-width: 900px) and (orientation: landscape) and (max-height: 600px) {
+    .panneau { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-rows: none; }
+    .scene .dessin { width: min(74%, 64svh); }
+    .scene .cercle { width: min(84%, 74svh); }
+    .bascule { top: 12px; left: 12px; }
+    .astuce { bottom: 10px; }
+    .infos { padding: 18px 20px; }
+    .hero h1 { margin-top: 28px; }
   }
   @media (max-width: 640px) {
     /* téléphone : grille simple à 2 colonnes, dans l'ordre du mur */
@@ -172,7 +186,9 @@
     .visuel { flex: none; height: clamp(130px, 38vw, 260px); }
   }
   @media (max-width: 560px) {
-    .surtitre { font-size: 9px; letter-spacing: .16em; }
+    .surtitre { font-size: 8px; letter-spacing: .12em; gap: 6px 12px; flex-wrap: wrap; }
+    .surtitre span { white-space: nowrap; }
+    .hero h1 .l2 { font-size: clamp(18px, 7vw, 94px); }
     .astuce { font-size: 8px; letter-spacing: .12em; }
     .scene { min-width: 0; }
     .bloc { flex-wrap: wrap; gap: 18px; } .bloc .barre { display: none; } .bloc a { margin-left: 0; }
