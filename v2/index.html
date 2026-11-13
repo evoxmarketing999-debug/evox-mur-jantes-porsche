@@ -554,6 +554,7 @@
     .veille .v-chiffres { gap: 14px; } .veille .v-chiffres small { letter-spacing: .08em; white-space: nowrap; }
     .veille .v-chiffres b { font-size: clamp(22px, min(6vw, 8vh), 40px); }
   }
+  @media (max-width: 360px) { .veille .v-toucher { letter-spacing: .04em; padding: 11px 14px; font-size: 10px; gap: 10px; } .veille .v-chiffres { gap: 10px; } .veille .v-chiffres small { font-size: 9px; letter-spacing: .02em; } .veille .v-chiffres b { font-size: 22px; } }
   @media (prefers-reduced-motion: reduce) { .veille *, .veille { animation: none !important; } }
 </style>
 <div class="veille cachee" id="veille" role="button" aria-label="Touchez pour découvrir">
